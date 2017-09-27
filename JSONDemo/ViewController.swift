@@ -47,20 +47,20 @@ class ViewController: UIViewController,UITableViewDataSource,UITableViewDelegate
     
     func startParsing(_ data :Data)
     {
-        let dict: NSDictionary!=(try! JSONSerialization.jsonObject(with: data, options: JSONSerialization.ReadingOptions.mutableContainers)) as! NSDictionary
+        let dict: NSDictionary! = (try! JSONSerialization.jsonObject(with: data, options: JSONSerialization.ReadingOptions.mutableContainers)) as! NSDictionary
         
         for i in 0  ..< (dict.value(forKey: "someArray") as! NSArray).count
         {
             arrDict.add((dict.value(forKey: "someArray") as! NSArray) .object(at: i))
         }
-//        for i in 0  ..< (dict.value(forKey: "avengers2") as! NSArray).count
-//        {
-//            arrDict.add((dict.value(forKey: "avengers2") as! NSArray) .object(at: i))
-//        }
-//        for i in 0  ..< (dict.value(forKey: "avengers3") as! NSArray).count
-//        {
-//            arrDict.add((dict.value(forKey: "avengers3") as! NSArray) .object(at: i))
-//        }
+        for i in 0  ..< (dict.value(forKey: "someArray2") as! NSArray).count
+        {
+            arrDict.add((dict.value(forKey: "someArray2") as! NSArray) .object(at: i))
+        }
+        for i in 0  ..< (dict.value(forKey: "someArray3") as! NSArray).count
+        {
+            arrDict.add((dict.value(forKey: "someArray3") as! NSArray) .object(at: i))
+        }
         tvJSON .reloadData()
     }
     
@@ -85,7 +85,7 @@ class ViewController: UIViewController,UITableViewDataSource,UITableViewDelegate
         let strLongitude : NSString=(arrDict[indexPath.row] as AnyObject).value(forKey: "longitude") as! NSString
         
         cell.lblTitle.text=strEventName as String
-        cell.lbDetails.text="Description: " + "\n" + (strDescription as String) + "Date and Time: " + (strDateTime as String) + "\n" + "links: " + (strLinks as String) + "\n" + "Latitude: " + (strLatitude as String) + "\n" + "Longitude: " + (strLongitude as String)
+        cell.lbDetails.text="Description: " (strDescription as String) + "\n" + (strDescription as String) + "Date and Time: " + (strDateTime as String) + "\n" + "links: " + (strLinks as String) + "\n" + "Latitude: " + (strLatitude as String) + "\n" + "Longitude: " + (strLongitude as String)
         return cell as TableViewCell
     }
 }
